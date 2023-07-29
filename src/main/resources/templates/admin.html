@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example</title>
+    <style>table th, table td {
+        padding: 5px;
+    }</style>
+</head>
+<body>
+<h1>Users table</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Roles</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="user : ${userList}">
+        <td th:utext="${user.getId()}">...</td>
+        <td th:utext="${user.getUsername()}">...</td>
+        <td th:utext="${user.getEmail()}">...</td>
+        <td th:utext="${user.toRolesString(user.roles)}">...</td>
+        <td>
+            <a th:href="@{/admin/edit/{id}(id=${user.getId()})}">Edit</a>
+
+        </td>
+    </tr>
+</table>
+
+<br/>
+<hr/>
+<a href="/admin/new">Create new user</a>
+<br/>
+<h4><a href="/logout">Logout</a></h4>
+
+</body>
+</html>
