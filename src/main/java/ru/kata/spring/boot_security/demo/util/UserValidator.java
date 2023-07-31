@@ -6,13 +6,14 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.UserService;
+import ru.kata.spring.boot_security.demo.service.UserServiceImp;
 
 @Component
 public class UserValidator implements Validator {
     private final UserService userService;
 
     @Autowired
-    public UserValidator(UserService userService) {
+    public UserValidator(UserServiceImp userService) {
         this.userService = userService;
     }
 
